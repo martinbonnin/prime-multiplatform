@@ -10,20 +10,16 @@ It is based on simple program generating pairs of twin primes from https://discu
 
 ## Data points
 
-| Platform            | Build time | Execution time | Artifact size |
-|---------------------|------------|----------------|---------------|
-| Kotlin/JVM          | 3.6s       | 1m13s          | 1.9 MB + JDK  |
-| GraalVM CE native   | 15.9s      | 1m40s          | 12.4 MB       |
-| GraalVM EE native   | 16.5s      | 1m33s          | 6.8 MB        |
-| Kotlin/Native       | 9s         | 1m37s          | 0.57 MB       |
-| Kotlin/Wasm preview | 5s         | 2m49s          | 0.18 MB       |
+| Platform            | Build time | Execution time | Artifact size | peak RSS |
+|---------------------|------------|----------------|---------------|----------|
+| Kotlin/JVM          |   13s      | 58s            | 1.9 MB + JDK  | 606 MB   |
+| GraalVM CE native   |   15.3s    | 2m25           | 12.4 MB       | 61 MB    |
+| Kotlin/Native       |   38s      | 3m03s          | 0.57 MB       | 6 MB     |
+| Kotlin/Wasm preview |   11s      | 2m12           | 0.18 MB + Node| 109 MB   |
 
 ## Environment
-- Linux 5.15.85-1-lts x86_64
-- AMD Ryzen 9 5900X 12-Core Processor 32 GB RAM
-- Kotlin 1.8.0
-- Java 17.0.5 (Liberica JDK)
-- GraalVM 22.3 Java 17
+- MacBook Pro M1 14" 2021
+- GraalVM CE 22.3.0 (build 17.0.5+8-jvmci-22.3-b08)
 
 ## Getting started
 
@@ -61,7 +57,7 @@ Compile
 ```
 Run
 ```
-./build/bin/native/releaseExecutable/prime-multiplatform.kexe
+java -jar target/prime-multiplatform-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 ### Kotlin/Wasm
